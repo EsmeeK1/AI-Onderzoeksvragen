@@ -1,0 +1,7 @@
+# Specific requirements for zero-shot learning
+transformers
+datasets
+sentencepiece
+ftfy
+regex
+tqdm

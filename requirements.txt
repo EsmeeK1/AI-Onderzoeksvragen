@@ -1,0 +1,21 @@
+#Core scientific stack
+
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+scipy
+
+#Deep learning
+
+torch
+torchvision
+torchaudio
+
+#Jupyter & dev tools
+
+jupyter
+notebook
+ipykernel
+pytest
