@@ -5,3 +5,6 @@ sentencepiece
 ftfy
 regex
 tqdm
+sentence-transformers
+clip
+kagglehub
