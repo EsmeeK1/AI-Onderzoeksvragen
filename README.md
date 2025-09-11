@@ -7,6 +7,7 @@ I will treat each research question as a **mini-project** with notebooks, code, 
 ---
 
 ## 📂 Project Structure
+```bash
 ai-onderzoeksvragen
 │
 ├── bootstrap.cmd # Setup script (venv + VSCode settings)
@@ -32,6 +33,7 @@ ai-onderzoeksvragen
 │ └── config/
 │
 └── .vscode/ # VS Code integration (auto from bootstrap.cmd)
+```
 
 ## 🛠️ Setup
 1. Clone this repository:
