@@ -28,7 +28,6 @@ ai-onderzoeksvragen
 │ └── ...
 │
 ├── shared/ # Utilities & common resources
-│ ├── data/
 │ ├── utils/
 │ └── config/
 │
