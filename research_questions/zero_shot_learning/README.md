@@ -28,11 +28,32 @@ With classification, it usually requires a large labeled dataset. However in man
 - Compare zero-shot classification with a small supervised baseline.
 
 ## Experiments
-- Zero-shot classification on facebook/bart-lage-mnli (`Bart_Large_Zero_Shot.ipynb`)
-- Zero-shot classification on [youtube-dataset] TO:DO
+- Zero-shot classification on facebook/bart-lage-mnli (`01_zero_shot_text_alisterluiz.ipynb`)
+- Zero-shot classification on all-mpnet-base-v2 (`02_zero_shot_text_endtoend.ipynb`)
+- Zero-shot classification with CLIP (`03_zero_shot_image_classification_CLIP.ipynb`)
 
 ## Results
-(To be filled after experiments.)
+- **Text (Rotten Tomatoes dataset):**
+  - Accuracy ~78% with `all-mpnet-base-v2`.
+  - Model showed a bias towards predicting *positive* reviews (high recall for positive, lower recall for negative).
+  - Learned that **label phrasing** (“Positive sentiment” vs “A positive review”) can influence results.
+
+- **Images (Unsplash dataset with CLIP):**
+  - Zero-shot classification into *dawn/day/dusk/night* and *indoor/outdoor*.
+  - Predictions were plausible overall (e.g., majority of photos marked *outdoor*).
+  - Certain categories (e.g., *dusk*) were rarely predicted, showing either dataset imbalance or difficulty in distinguishing subtle classes. Could also mean the dataset does not contain alot of dusk-pictures, but did not dive into that question.
 
 ## Reflections
-(To be filled after experiments: What worked? What didn’t? What did I learn?)
+- **Strengths:**
+  - Zero-shot learning is an interesting approach for prototyping and exploration.
+  - It enables classification tasks without labeled data, which is valuable in domains where labels are scarce or costly.
+  - Embedding-based similarity (cosine similarity) is a simple but effective mechanism.
+
+- **Limitations:**
+  - Sensitive to prompt wording, meaning results can vary with different phrasing.
+  - Model biases become visible (e.g., preferring "day" or "positive").
+  - Lack of ground truth in the image dataset made proper evaluation challenging.
+
+- **Learnings:**
+  - Understanding embeddings and cosine similarity is central to zero-shot learning.
+  - Zero-shot can provide useful baselines but should be validated with domain-specific data.

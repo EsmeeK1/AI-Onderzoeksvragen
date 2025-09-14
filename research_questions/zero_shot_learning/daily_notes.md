@@ -9,3 +9,11 @@ text zero-shot learning is quite simple in it's nature especially with pretraine
 
 Besides that with zero-shot text classification you can also seperate between subject [sport, technology, health] etc. instead of sentiment.
 
+### 14-9-2025
+Applying zero-shot on image data is not that difficult when using pretrained models like CLIP. Essentially you're just calculating similarities between vectors (text vector and image vector) to see which one comes closest.
+
+**Next Steps:**
+- Explore **AudioCLIP / CLAP** to apply zero-shot techniques on audio projects.
+- Potential tasks include zero-shot sound classification (*dog barking, car horn, rain*), audio-text retrieval (*“find clips of birds singing”*), and even speaker recognition.
+- This directly aligns with our team’s focus on **sound-based projects**, making audio zero-shot learning a next research direction.
+
