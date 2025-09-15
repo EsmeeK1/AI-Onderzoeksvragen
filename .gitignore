@@ -13,6 +13,7 @@ data/
 temp/
 models/
 .venv/
+research_questions/zero_shot_learning/notebooks/AudioCLIP/assets/
 
 # Compiled Java class files
 *.class
