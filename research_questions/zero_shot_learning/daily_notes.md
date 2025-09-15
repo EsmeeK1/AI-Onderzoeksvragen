@@ -12,8 +12,15 @@ Besides that with zero-shot text classification you can also seperate between su
 ### 14-9-2025
 Applying zero-shot on image data is not that difficult when using pretrained models like CLIP. Essentially you're just calculating similarities between vectors (text vector and image vector) to see which one comes closest.
 
+https://harrywang.me/clip: step by step walkthrough can be found in -> `03_zero_shot_image_CLIP.ipynb`
+
 **Next Steps:**
 - Explore **AudioCLIP / CLAP** to apply zero-shot techniques on audio projects.
 - Potential tasks include zero-shot sound classification (*dog barking, car horn, rain*), audio-text retrieval (*“find clips of birds singing”*), and even speaker recognition.
 - This directly aligns with our team’s focus on **sound-based projects**, making audio zero-shot learning a next research direction.
 
+### 15-9-2025
+Started reading a paper about AudioCLIP and zero-shot applications, decided to try to replicate the results
+https://arxiv.org/pdf/2106.13043: step by step walkthrough can be found in -> `04_zero_shot_audio_CLIP.ipynb`
+
+https://github.com/AndreyGuzhov/AudioCLIP.git
