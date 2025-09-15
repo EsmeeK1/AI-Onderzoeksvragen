@@ -8,14 +8,3 @@ tqdm
 sentence-transformers
 git+https://github.com/openai/CLIP.git
 kagglehub
-
-# Specific requirements for AudioCLIP
-torch
-torchvision
-librosa
-soundfile
-simplejpeg
-numpy
-matplotlib
-pillow
-termcolor==1.1.0
