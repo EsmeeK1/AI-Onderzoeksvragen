@@ -1,138 +1,131 @@
-# 04 — Installation manual (NL)
-Handleiding om de notebook **`04_zero_shot_audio_CLIP.ipynb`** te draaien.
-De notebook regelt zelf de **assets** (BPE vocab + checkpoint); jij hoeft **alleen de datasets** te downloaden en in de juiste map te zetten.
+# Installation Manual: Running AudioCLIP Zero-Shot Notebook
+
+This guide explains how to set up and run the **AudioCLIP zero-shot learning demo** in this repository.
 
 ---
 
-## 1 Benodigdheden
-- **Python 3.8.10** (aanrader)
-- **Virtuele omgeving** voor dit project (bijv. `.venv38`)
-- **Git** (optioneel, maar handig)
-- Schijfruimte: ca. **6–10 GB** (datasets + env)
+## 1. Prerequisites
 
-### (Optioneel) Virtuele omgeving aanmaken
-**Windows (PowerShell):**
-```powershell
+- **Python 3.8** is required.
+  Download and install Python 3.8.10 from the official website:
+  [https://www.python.org/downloads/release/python-3810/](https://www.python.org/downloads/release/python-3810/)
+
+- A working installation of **git** (optional, only needed if you want to explore the original AudioCLIP repo).
+
+---
+
+## 2. Create a Virtual Environment
+
+Navigate to the root of your project and create a virtual environment using Python 3.8:
+
+```bash
+# Windows (PowerShell)
 py -3.8 -m venv .venv38
-.\.venv38\Scripts\Activate.ps1
-python --version   # verwacht 3.8.x
+.venv38\Scripts\activate
+
+# Upgrade pip
+python -m pip install --upgrade pip
 ```
 
-**macOS/Linux (bash/zsh):**
+## 3. Install Requirements
+
+Install all required packages using the provided requirements.txt:
+
 ```bash
-python3.8 -m venv .venv38
-source .venv38/bin/activate
-python --version   # verwacht 3.8.x
+pip install -r research_questions\zero_shot_learning\notebooks\AudioCLIP\requirements.txt
 ```
 
----
+This will install PyTorch 1.7.1 (CPU version by default) and all dependencies pinned for compatibility with AudioCLIP.
 
-## 2 Datasets downloaden (alleen dit handmatig doen)
+## Download Required Datasets
+ESC-50 Dataset
 
-| **ESC-50** | https://github.com/karolpiczak/ESC-50 | ZIP of repo → uitgepakt | `data/zero-shot-sound/ESC-50-master` |
-| **UrbanSound8K** | https://zenodo.org/records/1203745 | `UrbanSound8K.zip` | `data/zero-shot-sound/UrbanSound8K` |
+Download the ESC-50 dataset from GitHub:
+https://github.com/karolpiczak/ESC-50
 
-### Verwachte mappenstructuur
-```
-data/
-└─ zero-shot-sound/
-   ├─ ESC-50-master/
-   │  ├─ audio/
-   │  └─ meta/esc50.csv
-   └─ UrbanSound8K/
-      ├─ audio/fold1 ... fold10
-      └─ metadata/UrbanSound8K.csv
-```
+UrbanSound8K Dataset
 
-> Let op hoofd-/kleine letters zoals hierboven.
+Download the UrbanSound8K dataset from the official website:
+https://urbansounddataset.weebly.com/
 
----
+After downloading, place both datasets in the following directory:
 
-## 3 Requirements installeren
-
-Installeer vervolgens alle requirements met de requirements.txt die in deze folder staat.
 ```bash
-pip install -r requirements.txt # Zorg dat je in de juiste map zit
+data/zero-shot-sound/
+    ├── ESC-50-master/
+    └── UrbanSound8K/
 ```
 
-> Op sommige systemen kan `librosa` een extra backend nodig hebben — `soundfile` is daarom expliciet toegevoegd.
+## 5. Notebook Location
 
----
+The main notebook is located here:
 
-## 4) Imports in de notebook
+```bash
+notebooks/AudioCLIP/demo/04_zero_shot_audio_CLIP.ipynb
+```
 
-De notebook gebruikt o.a. deze imports (ter referentie of copy/paste in een cel):
+Open it in Jupyter Notebook or JupyterLab and run the cells step by step.
+
+## 6. Assets (Pretrained Models & Tokenizer)
+
+When running the notebook, make sure an assets/ folder exists under notebooks/AudioCLIP/.
+It must contain at least the following two files:
+
+**bpe_simple_vocab_16e6.txt.gz:** https://github.com/AndreyGuzhov/AudioCLIP/releases/download/v0.1/bpe_simple_vocab_16e6.txt.gz
+
+**AudioCLIP-Full-Training.pt:** https://github.com/AndreyGuzhov/AudioCLIP/releases/download/v0.1/AudioCLIP-Full-Training.pt
+
+You can download them manually or use Python to fetch them:
 
 ```python
-import os
-import sys
-import glob
+import os, urllib.request
 
-import librosa
-import librosa.display
+ASSETS_DIR = "assets"
+os.makedirs(ASSETS_DIR, exist_ok=True)
 
-import simplejpeg
-import numpy as np
+files = [
+    ("https://github.com/AndreyGuzhov/AudioCLIP/releases/download/v0.1/bpe_simple_vocab_16e6.txt.gz",
+     "bpe_simple_vocab_16e6.txt.gz"),
+    ("https://github.com/AndreyGuzhov/AudioCLIP/releases/download/v0.1/AudioCLIP-Full-Training.pt",
+     "AudioCLIP-Full-Training.pt"),
+]
 
-import torch
-import torchvision as tv
-
-import matplotlib.pyplot as plt
-
-from PIL import Image
-from IPython.display import Audio, display
-
-sys.path.append(os.path.abspath(f'{os.getcwd()}/..'))
-
-from model import AudioCLIP
-from utils.transforms import ToTensor1D
-
-
-torch.set_grad_enabled(False)
-
-MODEL_FILENAME = 'AudioCLIP-Full-Training.pt'
-# derived from ESResNeXt
-SAMPLE_RATE = 44100
-# derived from CLIP
-IMAGE_SIZE = 224
-IMAGE_MEAN = 0.48145466, 0.4578275, 0.40821073
-IMAGE_STD = 0.26862954, 0.26130258, 0.27577711
-
-LABELS = ['cat', 'thunderstorm', 'coughing', 'alarm clock', 'car horn']
+for url, fname in files:
+    path = os.path.join(ASSETS_DIR, fname)
+    if not os.path.exists(path):
+        print(f"Downloading {fname}...")
+        urllib.request.urlretrieve(url, path)
+    else:
+        print(f"{fname} already exists.")
 ```
 
-> De notebook installeert/plaatst zelf de assets in de map `assets/` en gebruikt `MODEL_FILENAME` wanneer nodig.
+## 7. Folder Structure
 
----
+After installation, your project should look like this (simplified):
 
-## 5) Notebook starten
-
-Start Jupyter (of open in VS Code):
-
-```bash
-jupyter notebook
-# of
-jupyter lab
+```kotlin
+research_questions/
+└── zero_shot_learning/
+    ├── data/
+    │   └── zero-shot-sound/
+    │       ├── ESC-50-master/
+    │       └── UrbanSound8K/
+    └── notebooks/
+        └── AudioCLIP/
+            ├── assets/
+            │   ├── bpe_simple_vocab_16e6.txt.gz
+            │   └── AudioCLIP-Full-Training.pt
+            ├── demo/
+            │   └── 04_zero_shot_audio_CLIP.ipynb
+            ├── model/
+            ├── utils/
+            └── requirements.txt
 ```
 
-Open **`04_zero_shot_audio_CLIP.ipynb`** en voer de cellen van boven naar beneden uit.
+## 8. Further Exploration
 
----
+This notebook uses a fork of AudioCLIP. If you would like to explore or experiment further, check out the original repository here:
+https://github.com/AndreyGuzhov/AudioCLIP
 
-## 6) Snelle sanity check
-- Bestaan de mappen `data/zero-shot-sound/ESC-50-master` en `data/zero-shot-sound/UrbanSound8K` met de **exacte** structuur hierboven?
-- Is de venv actief en zijn de requirements zonder errors geïnstalleerd?
-- Kun je in een notebookcel draaien:
-  ```python
-  import torch, torchvision, librosa
-  print(torch.__version__, torchvision.__version__, librosa.__version__)
-  ```
+Additional context and usage examples are available in the repository’s own README.md.
 
----
-
-## 7) Veelvoorkomende issues
-- **Dataset niet gevonden**: pad of mapnaam verschilt; check de structuur in §2.
-- **Librosa/soundfile errors**: zorg dat `soundfile` is geïnstalleerd (zit in requirements).
-- **GPU/Torch mismatch**: deze workflow vereist geen GPU; de standaard `torch`-wiel volstaat. Wil je GPU, installeer een CUDA-build die bij je systeem past.
-
-credits naar https://github.com/AndreyGuzhov/AudioCLIP/tree/master?tab=readme-ov-file#audioclip toevoegen
