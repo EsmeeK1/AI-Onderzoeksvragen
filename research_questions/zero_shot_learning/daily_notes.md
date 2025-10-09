@@ -24,3 +24,9 @@ Started reading a paper about AudioCLIP and zero-shot applications, decided to t
 https://arxiv.org/pdf/2106.13043: step by step walkthrough can be found in -> `04_zero_shot_audio_CLIP.ipynb`
 
 https://github.com/AndreyGuzhov/AudioCLIP.git
+
+### 9-10-2025
+Trying an experiment where the goal is to use zero-shot retrieval of specific sounds in music (example harmonica) in music numbers with raw time locations. I'm hoping to deliver a demo-notebook with examples thats runnable for others to experiment with.
+
+Dataset used for this experiment: https://huggingface.co/datasets/rkstgr/mtg-jamendo
+**AudioCLIP** was used for the pretrained model.

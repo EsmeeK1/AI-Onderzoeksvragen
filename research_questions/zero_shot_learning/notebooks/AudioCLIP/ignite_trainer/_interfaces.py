@@ -27,7 +27,7 @@ class AbstractNet(abc.ABC, torch.nn.Module):
         pass
 
 
-class AbstractTransform(abc.ABC, Callable[[torch.Tensor], torch.Tensor]):
+class AbstractTransform(abc.ABC, Callable[[torch.Tensor], torch.Tensor]): # type: ignore[misc]
 
     @abc.abstractmethod
     def __call__(self, x: torch.Tensor) -> torch.Tensor:
