@@ -30,3 +30,20 @@ Trying an experiment where the goal is to use zero-shot retrieval of specific so
 
 Dataset used for this experiment: https://huggingface.co/datasets/rkstgr/mtg-jamendo
 **AudioCLIP** was used for the pretrained model.
+
+### 13-10-2025
+
+Focused on building and documenting a zero-shot instrument recognition pipeline using AudioCLIP and the IRMAS dataset.
+
+Main progress and findings:
+
+- Implemented filtering for single-label samples to ensure fair evaluation.
+- Observed a bias toward electric guitar, which seems reasonable given model pretraining data.
+- Implemented a free-text retrieval feature that allows querying any sound (e.g., “piano” or “violin solo”) across the dataset.
+
+**Next steps:**
+
+Evaluate model behavior on multi-label clips (multiple instruments per track).
+Explore ways to reduce class bias (possibly normalization or balancing).
+Prepare short presentation slides explaining zero-shot AudioCLIP retrieval workflow.
+Look at few-shot learning possibilities
