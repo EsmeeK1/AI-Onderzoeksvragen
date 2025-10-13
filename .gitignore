@@ -15,6 +15,7 @@ models/
 .venv/
 .venv38/
 research_questions/zero_shot_learning/notebooks/AudioCLIP/assets/
+research_questions/zero_shot_learning/notebooks/AudioCLIP/demo/emb_cache/
 
 # Compiled Java class files
 *.class
