@@ -19,3 +19,12 @@ jupyter
 notebook
 ipykernel
 pytest
+
+librosa
+termcolor
+tqdm
+ignite
+pytorch-ignite
+visdom
+ftfy
+regex
