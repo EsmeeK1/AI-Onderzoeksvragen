@@ -11,7 +11,7 @@ where python >nul 2>nul || (echo [FOUT] Python niet gevonden & exit /b 1)
 REM === Venv aanmaken (indien nodig) ===
 if not exist "%VENV_DIR%" (
   echo [INFO] Venv aanmaken in "%CD%\%VENV_DIR%"...
-  python -m venv "%VENV_DIR%" || (echo [FOUT] venv aanmaken faalde & exit /b 1)
+  py -3 -m venv "%VENV_DIR%" || (echo [FOUT] venv aanmaken faalde & exit /b 1)
 )
 
 REM === Venv activeren via CMD (geen execution policy gezeik) ===
