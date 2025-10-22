@@ -20,3 +20,32 @@ Added detailed inline comments explaining each analysis step (missing values, di
 - Prepare feature-target matrices (`X`, `y`) for baseline modeling experiments.
 
 ## 2025-10-22
+Built and tested baseline models to study how model complexity and regularization affect generalization.
+Added clear markdown explanations and inline comments for each modeling step.
+
+**Key Experiments**
+
+  - **Linear Models (Ridge, Lasso, ElasticNet):**
+  Trained models across a range of alpha values to observe bias–variance behavior. Ridge gave the lowest RMSE (~0.12).
+
+  - **Decision Tree:**
+  Increased max_depth to show overfitting. Validation RMSE stabilized around depth 6–8.
+
+  - **Random Forest:**
+  Tested the effect of averaging more trees. Found stable results beyond 100 estimators.
+
+  - **Neural Network (MLP):**
+  Compared models with and without early stopping. Early stopping improved generalization (RMSE 0.19 vs 0.21).
+
+  - **Curse of Dimensionality:**
+  Added random noise features to test robustness. Ridge stayed stable, Random Forest worsened slightly, MLP degraded quickly.
+
+  - **PCA (Dimensionality Reduction):**
+  PCA reduced numeric dimensionality and improved generalization for Ridge and MLP. Tree models remained unaffected.
+
+**Key Findings**
+
+- Ridge regression is the most reliable model for this dataset.
+- Regularization and early stopping reduce overfitting and improve validation performance.
+- PCA effectively removes redundant numeric information without large information loss.
+- Random Forests handle non-linearities well but are less data-efficient than Ridge.
