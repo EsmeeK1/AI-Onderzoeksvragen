@@ -10,13 +10,9 @@ I will treat each research question as a **mini-project** with notebooks, code, 
 ```bash
 ai-onderzoeksvragen
 │
-├── bootstrap.cmd # Setup script (venv + VSCode settings)
+├── bootstrap.cmd # Setup script (.venv + VSCode settings)
 ├── requirements.txt # Shared dependencies
 ├── README.md # Project overview (this file)
-│
-├── docs/ # Documentation & methodological notes
-│ ├── overview.md
-│ └── methods/
 │
 ├── research_questions/ # Each backlog item is a mini-project
 │ ├── Project-1/
