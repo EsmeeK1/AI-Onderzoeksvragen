@@ -17,6 +17,7 @@ models/
 research_questions/zero_shot_learning/notebooks/AudioCLIP/assets/
 research_questions/zero_shot_learning/notebooks/AudioCLIP/demo/emb_cache/
 research_questions/model_complexity_and_generalization/reports
+research_questions/unsupervised_learning/notebooks/test_sounds/
 
 research_questions/unsupervised_learning/outputs/cache_cnn
 research_questions/unsupervised_learning/outputs/cache_fc
