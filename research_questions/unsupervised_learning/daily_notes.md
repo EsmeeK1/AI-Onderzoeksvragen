@@ -15,3 +15,8 @@ Made two cnn-pipelines to preprocess the data and train a model to detect anomal
 ### conclusions
 1. The `Log-mel based` autoencoder learns the general structure of the fan sounds but does not produce higher reconstruction errors for anomalous recordings. Because the difference in error is very small, the model cannot reliably distinguish normal sounds from anomalous ones using Mel-spectrogram patches alone.
 2. The `STFT-based autoencoder` learns to reproduce normal sounds but does not produce noticeably higher errors for anomalous ones. The similarity between normal and anomaly errors shows that, in this setup, the STFT representation does not make the anomalies easier to detect. Just like the Mel experiment, this model cannot reliably separate normal and anomalous fan recordings based on reconstruction error alone.
+
+# 24-11-2025
+added the test plot to visualise original, reconstructed and error map. Tested with out of domain sounds and normal/ abnormal sounds.
+
+Model does recognize abnormal sounds, but in a subtle way. Not as promiment as i'd like to. Going to test different models and preprocessing/ spectrogram inputs.
