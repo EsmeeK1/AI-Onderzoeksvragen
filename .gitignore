@@ -24,6 +24,7 @@ research_questions/unsupervised_learning/outputs/cache_fc
 research_questions/unsupervised_learning/outputs
 research_questions/unsupervised_learning/notebooks/proxy_models
 research_questions/abnormal_sound_detection/outputs
+research_questions/abnormal_sound_detection/room_normality_baseline/recordings
 
 # Compiled Java class files
 *.class
