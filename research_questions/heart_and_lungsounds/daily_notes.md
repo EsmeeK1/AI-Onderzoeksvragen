@@ -23,3 +23,6 @@ Structure of the ALDS-NET dataset is messy, hence why i haven't touched it yet.
 
 ## 17-11-2025
 Made an EDA-Report for the same 3 datasets. Looked into medical terms such as recording locations, soundtypes, missing values, waveform plots, playback etc.
+
+## 3-12-2025
+Validaded the counts in the ICBHI, KA and HLS-CMDS dataset.
