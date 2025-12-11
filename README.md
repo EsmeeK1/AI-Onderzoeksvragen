@@ -6,7 +6,7 @@ I will treat each research question as a **mini-project** with notebooks, code, 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 ```bash
 ai-onderzoeksvragen
 │
@@ -30,7 +30,7 @@ ai-onderzoeksvragen
 └── .vscode/ # VS Code integration (auto from bootstrap.cmd)
 ```
 
-## 🛠️ Setup
+## Setup
 1. Clone this repository:
 ```bash
 git clone https://bitbucket.org/<your-username>/ai-research-questions.git
