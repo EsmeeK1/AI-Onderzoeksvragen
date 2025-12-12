@@ -9,6 +9,7 @@ dist/
 .vscode/
 
 # Folders
+*.wav
 data/
 temp/
 models/

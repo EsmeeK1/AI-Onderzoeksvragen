@@ -28,3 +28,4 @@ pytorch-ignite
 visdom
 ftfy
 regex
+pyarrow
