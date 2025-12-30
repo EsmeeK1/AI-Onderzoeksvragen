@@ -28,6 +28,9 @@ research_questions/abnormal_sound_detection/notebooks/test_sounds
 research_questions/unsupervised_learning/notebooks/proxy_models
 research_questions/abnormal_sound_detection/outputs
 research_questions/abnormal_sound_detection/room_normality_baseline/recordings
+research_questions/heart_and_lungsounds/data/processed
+
+*.npy
 
 # Compiled Java class files
 *.class
